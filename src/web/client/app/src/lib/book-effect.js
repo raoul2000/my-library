@@ -7,6 +7,7 @@ import { getBooks } from './book-api';
  */
 const useGetBooks = () => {
     const [books, setBooks] = useState(null);
+    
     // TODO: add a way to refresh the book list (see https://github.com/raoul2000/react-play/blob/master/src/components/friend-of-the-day/friend-api.js)
     useEffect(() => {
         if (books === null) {
