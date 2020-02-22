@@ -1,0 +1,7 @@
+@baseUrl = http://localhost/dev/my-library/src/web/index.php?r=api
+
+### GET all books
+GET {{baseUrl}}/book
+
+### show the overview information of user listing
+HEAD {{baseUrl}}/book
