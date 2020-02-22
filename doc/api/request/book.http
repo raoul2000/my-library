@@ -1,7 +1,26 @@
 @baseUrl = http://localhost/dev/my-library/src/web/index.php?r=api
 
-### GET all books
+### GET all books (all fields)
 GET {{baseUrl}}/book
+
+### GET all books : field list
+GET {{baseUrl}}/book
+    &fields=title
 
 ### show the overview information of user listing
 HEAD {{baseUrl}}/book
+
+### GET book by ID
+GET {{baseUrl}}/book/view
+    &id=1
+
+### GET book by ID with field list (only title)
+GET {{baseUrl}}/book/view
+    &id=1
+    &fields=title
+
+### GET book by ID : NOT FOUND
+GET {{baseUrl}}/book/view
+    &id=11112
+
+
