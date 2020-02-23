@@ -23,4 +23,8 @@ GET {{baseUrl}}/book/view
 GET {{baseUrl}}/book/view
     &id=11112
 
+### SEARCH book by ID : NOT FOUND
+GET {{baseUrl}}/book/search
+    &title=DD
+
 

@@ -2,7 +2,10 @@
 
 namespace app\controllers\api;
 
+use Yii;
 use yii\rest\ActiveController;
+use \app\models\Book;
+use yii\data\ActiveDataProvider;
 
 class BookController extends ActiveController
 {
@@ -31,5 +34,44 @@ class BookController extends ActiveController
     
             ],
         ]);
+    }    
+
+    public function actions()
+    {
+        $actions = parent::actions();
+    
+        // disable some actions
+        unset($actions['delete'], $actions['create'], $actions['update']);
+
+        return $actions;
+    }      
+
+    /**
+     * Search book by title
+     *
+     * @param string $title
+     * @return void
+     */
+    public function actionSearch($title)
+    {
+        $this->checkAccess('search');
+
+        return new ActiveDataProvider([
+            'query' => Book::find()->where(['like', 'title', $title])
+        ]);
+        /*
+        // more complex search with related and sort on 'name' column
+        return new ActiveDataProvider([
+            'query' => Contact::find()
+                ->where(['like', 'name', $name])
+                ->andWhere(['is_natural_person' => true])
+                ->with('address'),
+            'sort'=> [
+                'defaultOrder' => [
+                    'name' => SORT_DESC
+                ]
+            ]
+        ]);
+        */
     }    
 }
